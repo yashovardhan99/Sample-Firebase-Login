@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Firebase Login</string>
+    <string name="logo">Logo</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="name">Your name</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
