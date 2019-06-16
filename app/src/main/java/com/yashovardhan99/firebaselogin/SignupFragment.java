@@ -1,5 +1,7 @@
 package com.yashovardhan99.firebaselogin;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +36,7 @@ import com.yashovardhan99.firebaselogin.databinding.FragmentSignupBinding;
 public class SignupFragment extends Fragment {
     private FragmentSignupBinding binding;
     private final String TAG = "SignUpFragment";
+    private CircularProgressDrawable drawable;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,19 +47,61 @@ public class SignupFragment extends Fragment {
     }
 
     private void signup(View v) {
+        showProgress();
         String name = binding.nameEdittext.getText().toString();
         String email = binding.emailEdittext.getText().toString();
         String password = binding.passwordEdittext.getText().toString();
         String confirmPassword = binding.confirmPasswordEdittext.getText().toString();
-        if (!validate(name, email, password, confirmPassword))
+        if (!validate(name, email, password, confirmPassword)) {
+            hideProgress();
             return;
+        }
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(authResultTask -> {
             if (authResultTask.isSuccessful())
                 onSignUp(authResultTask.getResult(), name);
-            else
+            else {
                 onSignUpFailed(authResultTask.getException());
+                hideProgress();
+            }
         });
+    }
+
+    private void hideProgress() {
+        if (drawable != null)
+            drawable.stop();
+        drawable = null;
+        binding.signupButton.setText(R.string.sign_up);
+        binding.signupButton.setCompoundDrawables(null, null, null, null);
+    }
+
+    private void showProgress() {
+        drawable = new CircularProgressDrawable(getContext());
+        drawable.setStyle(CircularProgressDrawable.LARGE);
+        drawable.setColorSchemeColors(Color.WHITE);
+        int size = (int) (drawable.getCenterRadius() + drawable.getStrokeWidth()) * 2;
+        drawable.setBounds(0, 0, size, size);
+        binding.signupButton.setText("Signing Up");
+        binding.signupButton.setCompoundDrawables(null, null, drawable, null);
+        drawable.start();
+
+        Drawable.Callback callback = new Drawable.Callback() {
+            @Override
+            public void invalidateDrawable(@NonNull Drawable who) {
+                binding.signupButton.invalidate();
+            }
+
+            @Override
+            public void scheduleDrawable(@NonNull Drawable who, @NonNull Runnable what, long when) {
+
+            }
+
+            @Override
+            public void unscheduleDrawable(@NonNull Drawable who, @NonNull Runnable what) {
+
+            }
+        };
+        drawable.setCallback(callback);
     }
 
     private boolean validate(String name, String email, String password, String confirmPassword) {
@@ -88,12 +134,12 @@ public class SignupFragment extends Fragment {
                 .build();
         user.updateProfile(changeRequest).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Log.d(TAG, "onSignUp: Successfuly updated name");
+                Log.d(TAG, "onSignUp: Successfully updated name");
                 FancyToast.makeText(getContext(), "Success!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host);
                 navController.navigate(R.id.welcomeFragment);
             } else {
-                Log.d(TAG, "onSignUp: Error updating name");
+                Log.d(TAG, "onSignUp: Error updating name. Error - " + task.getException());
                 FancyToast.makeText(getContext(), "Something is weird. Your profile is missing your name", FancyToast.LENGTH_LONG, FancyToast.INFO, false).show();
                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host);
                 navController.navigate(R.id.welcomeFragment);
@@ -113,11 +159,11 @@ public class SignupFragment extends Fragment {
                 if (exception instanceof FirebaseAuthWeakPasswordException) {
                     binding.passwordInputlayout.setError("Password too weak");
                 } else
-                    FancyToast.makeText(getContext(), "Invalid Email or password",
+                    FancyToast.makeText(getContext(), "Invalid Email",
                             FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
             } else if (exception instanceof FirebaseAuthInvalidUserException) {
-                FancyToast.makeText(getContext(), "Invalid Email or password", FancyToast.LENGTH_LONG,
-                        FancyToast.ERROR, false).show();
+                FancyToast.makeText(getContext(), "Your account may be disabled. Please contact support",
+                        FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
             } else if (exception instanceof FirebaseAuthUserCollisionException) {
                 FancyToast.makeText(getContext(), "Account Already Exists", FancyToast.LENGTH_LONG,
                         FancyToast.WARNING, false).show();
@@ -128,6 +174,5 @@ public class SignupFragment extends Fragment {
             FancyToast.makeText(getContext(), "Something went wrong signing you up", FancyToast.LENGTH_LONG,
                     FancyToast.ERROR, false).show();
         }
-        binding.signupButton.setEnabled(true);
     }
 }
