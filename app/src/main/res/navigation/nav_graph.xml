@@ -23,10 +23,22 @@
         android:id="@+id/loginFragment"
         android:name="com.yashovardhan99.firebaselogin.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.yashovardhan99.firebaselogin.SignupFragment"
         android:label="Sign Up"
-        tools:layout="@layout/fragment_signup" />
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.yashovardhan99.firebaselogin.WelcomeFragment"
+        android:label="Welcome" />
 </navigation>

@@ -17,78 +17,82 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/name_inputelayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:focusedByDefault="true"
-            android:hint="@string/name"
-            android:nextFocusDown="@id/email_inputlayout"
-            tools:ignore="UnusedAttribute">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name_edittext"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_inputelayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_margin="8dp"
+                android:focusedByDefault="true"
+                android:hint="@string/name"
+                android:nextFocusDown="@id/email_inputlayout"
+                tools:ignore="UnusedAttribute">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email_inputlayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:hint="@string/email_address"
-            android:nextFocusDown="@id/password_inputlayout">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_edittext"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_inputlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_margin="8dp"
+                android:hint="@string/email_address"
+                android:nextFocusDown="@id/password_inputlayout">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_inputlayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:hint="@string/password"
-            android:nextFocusDown="@id/confirm_password_inputlayout"
-            app:layout_constraintBottom_toTopOf="@id/confirm_password_inputlayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:passwordToggleEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_inputlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_margin="8dp"
+                android:hint="@string/password"
+                android:nextFocusDown="@id/confirm_password_inputlayout"
+                app:layout_constraintBottom_toTopOf="@id/confirm_password_inputlayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/confirm_password_inputlayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:hint="@string/confirm_password"
-            android:nextFocusDown="@id/signup_button"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirm_password_inputlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_margin="8dp"
+                android:hint="@string/confirm_password"
+                android:nextFocusDown="@id/signup_button"
+                app:passwordToggleEnabled="true">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/signup_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:padding="16dp"
-            android:text="@string/sign_up" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirm_password_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signup_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:padding="16dp"
+                android:text="@string/sign_up" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
