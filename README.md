@@ -1,11 +1,17 @@
 # Sample-Firebase-Login
 A native android sample of implementing firebase login and signup. This sample project can be modified to suit your needs. I plan to maintain this project to help myself and others get a good place from where they can get a simple login and signup page for their android apps. Even if you do not use firebase, you can use the layouts in your project.
 
+## Screenshots
+![Onboarding](Screenshots/Screenshot_1560715271.png)|![Logging In](Screenshots/Screenshot_1560715291.png)|![Login Failed](Screenshots/Screenshot_1560715295.png)
+----------------------------------------------------|----------------------------------------------------|--------------------------------------------------------------
+![Sign up page](Screenshots/Screenshot_1560715341.png)|![Signing up](Screenshots/Screenshot_1560715337.png)|![SignUp warning](Screenshots/Screenshot_1560715334.png)
+
+
 ## Motivation
 I am planning to create a series of small sample android apps which can then be used when building a larger app. This reduces the time needed to deal with minor tasks such as setting up login and sign up and allows to focus on more important tasks instead. This project is the first installment in that series!
 
 ## Code Style
-Try to follow the [AOSP Code style](https://source.android.com/setup/contribute/code-style) or the [Google Java style guide](https://google.github.io/styleguide/javaguide.html)
+Try to follow the [AOSP Code style](https://source.android.com/setup/contribute/code-style) or the [Google Java style guide](https://google.github.io/styleguide/javaguide.html). I know I won't be able to follow them thoroughly though :wink:
 
 ## Built for Android
 - Min SDK version : 19 (KitKat)
@@ -15,10 +21,11 @@ Try to follow the [AOSP Code style](https://source.android.com/setup/contribute/
 - Data binding is enabled
 - Compiled with Java compatibility 1.8
 
-### Dependencies used:-
-- Google Material Components
-- Firebase Core and Auth
-- Jetpack Navigation (Android Architecture)
+### External Dependencies:-
+- [Google Material Components](https://github.com/material-components/material-components-android)
+- [Firebase](https://firebase.google.com/) Core and Auth
+- [Jetpack](https://developer.android.com/jetpack/) Navigation (Android Architecture)
+- [FancyToast-Android](https://github.com/Shashank02051997/FancyToast-Android)  
 
 ## Work in Progress
  - [X] Creating a new Android Studio Project
@@ -26,10 +33,15 @@ Try to follow the [AOSP Code style](https://source.android.com/setup/contribute/
  - [X] Creating Layouts
  - [X] Creating Fragments
  - [X] Creating Navigation Graph
- - [ ] Implementing FirebaseAuth for Login
- - [ ] Implementing FirebaseAuth for SignUp
- - [ ] Implementing FirebaseAuth for Single Click Email Login
- - [ ] Adding Email Verification
+ - [X] Implementing FirebaseAuth for Login
+ - [X] Implementing FirebaseAuth for SignUp
+ - [ ] ~~Implementing FirebaseAuth for Single Click Email Login~~ - Not on priority
+ - [ ] ~~Adding Email Verification~~ - Not on priority
+ - [ ] Implement reset password
+ - [ ] Implement Anonymous Sign in
+ - [ ] Add sign out options on welcome page
+ - [ ] Check for sign in at pre-login page
+ - [ ] Remove back navigation from welcome page
 
 ## Usage
 To use this sample in your own project, you can either clone this repo and build a completely new app or you can take the relevant layouts and fragments you need. Either way, please give credit where due and use in accordance with the license.
