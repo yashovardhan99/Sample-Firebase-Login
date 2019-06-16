@@ -24,6 +24,7 @@ public class PreLoginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ((MainActivity) getActivity()).getSupportActionBar().hide();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_prelogin, container, false);
         return binding.getRoot();
     }

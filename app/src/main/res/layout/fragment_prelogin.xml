@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@drawable/ic_launcher_background"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:contentDescription="@string/logo"
             android:padding="16dp"
+            android:layout_marginTop="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintBottom_toTopOf="@id/login_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:src="@drawable/logo_pd" />
         <!-- Instead of an image view here, you can also use a slideshow of images
         to introduce users to your app. It all comes down to your choice-->
 
@@ -34,10 +31,8 @@
             android:layout_margin="16dp"
             android:padding="16dp"
             android:text="@string/login"
-            app:layout_constraintBottom_toTopOf="@id/signup_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logo" />
+            android:layout_above="@id/signup_button"
+            android:layout_centerHorizontal="true" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signup_button"
@@ -47,9 +42,8 @@
             android:layout_margin="16dp"
             android:padding="16dp"
             android:text="@string/sign_up"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </layout>
