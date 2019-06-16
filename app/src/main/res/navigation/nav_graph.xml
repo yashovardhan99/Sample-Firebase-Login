@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/preLoginFragment"
         android:name="com.yashovardhan99.firebaselogin.PreLoginFragment"
-        android:label="fragment_prelogin"
+        android:label="Welcome to SampleApp"
         tools:layout="@layout/fragment_prelogin" >
         <action
             android:id="@+id/action_preLoginFragment_to_loginFragment"
@@ -22,11 +22,11 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.yashovardhan99.firebaselogin.LoginFragment"
-        android:label="fragment_login"
+        android:label="Login"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.yashovardhan99.firebaselogin.SignupFragment"
-        android:label="fragment_signup"
+        android:label="Sign Up"
         tools:layout="@layout/fragment_signup" />
 </navigation>

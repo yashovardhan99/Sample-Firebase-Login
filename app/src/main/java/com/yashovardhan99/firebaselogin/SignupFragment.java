@@ -22,6 +22,7 @@ public class SignupFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup, container, false);
+        ((MainActivity)getActivity()).getSupportActionBar().show();
         return binding.getRoot();
     }
 }
