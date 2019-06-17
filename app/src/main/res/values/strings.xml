@@ -9,4 +9,5 @@
     <string name="name">Your name</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="reset_password">Reset Password</string>
+    <string name="continue_without_signing_in">Continue without Signing in</string>
 </resources>

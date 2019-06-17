@@ -121,7 +121,8 @@ public class LoginFragment extends Fragment {
         FancyToast.makeText(getContext(), "Logged In!", FancyToast.LENGTH_LONG,
                 FancyToast.SUCCESS, false).show();
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host);
-        navController.navigate(R.id.welcomeFragment);
+        navController.navigate(
+                LoginFragmentDirections.actionLoginFragmentToWelcomeFragment());
     }
 
     private void onLoginFailed(Exception exception) {

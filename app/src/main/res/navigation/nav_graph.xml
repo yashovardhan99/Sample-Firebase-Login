@@ -18,6 +18,11 @@
             android:id="@+id/action_preLoginFragment_to_signupFragment"
             app:destination="@id/signupFragment"
             app:popUpTo="@+id/preLoginFragment" />
+        <action
+            android:id="@+id/action_preLoginFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -26,7 +31,9 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
@@ -35,7 +42,9 @@
         tools:layout="@layout/fragment_signup" >
         <action
             android:id="@+id/action_signupFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"

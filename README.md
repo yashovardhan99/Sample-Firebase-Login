@@ -2,9 +2,9 @@
 A native android sample of implementing firebase login and signup. This sample project can be modified to suit your needs. I plan to maintain this project to help myself and others get a good place from where they can get a simple login and signup page for their android apps. Even if you do not use firebase, you can use the layouts in your project.
 
 ## Screenshots
-![Onboarding](Screenshots/Screenshot_1560715271.png)|![Logging In](Screenshots/Screenshot_1560715291.png)|![Login Failed](Screenshots/Screenshot_1560715295.png)
+![Onboarding](Screenshots/Screenshot_1560756329.png)|![Logging In](Screenshots/Screenshot_1560715291.png)|![Login Failed](Screenshots/Screenshot_1560715295.png)
 ----------------------------------------------------|----------------------------------------------------|--------------------------------------------------------------
-![Sign up page](Screenshots/Screenshot_1560715341.png)|![Signing up](Screenshots/Screenshot_1560715337.png)|![SignUp warning](Screenshots/Screenshot_1560715334.png)
+![Sign up page](Screenshots/Screenshot_1560715341.png)|![Signing up](Screenshots/Screenshot_1560715337.png)|![Anonymous Sign in](Screenshots/Screenshot_1560756486.png)
 
 
 ## Motivation
