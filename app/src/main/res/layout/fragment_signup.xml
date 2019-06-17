@@ -57,9 +57,6 @@
                 android:layout_margin="8dp"
                 android:hint="@string/password"
                 android:nextFocusDown="@id/confirm_password_inputlayout"
-                app:layout_constraintBottom_toTopOf="@id/confirm_password_inputlayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText

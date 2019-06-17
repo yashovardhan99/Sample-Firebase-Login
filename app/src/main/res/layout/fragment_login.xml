@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:hint="@string/password"
+                app:passwordToggleEnabled="true"
                 android:nextFocusDown="@id/login_button">
 
                 <com.google.android.material.textfield.TextInputEditText
