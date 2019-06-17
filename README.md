@@ -38,7 +38,7 @@ Try to follow the [AOSP Code style](https://source.android.com/setup/contribute/
  - [ ] ~~Implementing FirebaseAuth for Single Click Email Login~~ - Not on priority
  - [ ] ~~Adding Email Verification~~ - Not on priority
  - [ ] Implement reset password
- - [ ] Implement Anonymous Sign in
+ - [X] Implement Anonymous Sign in
  - [ ] Add sign out options on welcome page
  - [ ] Check for sign in at pre-login page
  - [ ] Remove back navigation from welcome page
