@@ -1,4 +1,7 @@
 # Sample-Firebase-Login
+[![GitHub](https://img.shields.io/github/license/yashovardhan99/sample-firebase-login.svg)]()
+[![GitHub last commit](https://img.shields.io/github/last-commit/yashovardhan99/sample-Firebase-Login.svg)]()
+
 A native android sample of implementing firebase login and signup. This sample project can be modified to suit your needs. I plan to maintain this project to help myself and others get a good place from where they can get a simple login and signup page for their android apps. Even if you do not use firebase, you can use the layouts in your project.
 
 ## Screenshots
