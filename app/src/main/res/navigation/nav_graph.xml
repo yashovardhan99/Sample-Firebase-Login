@@ -34,6 +34,9 @@
             app:destination="@id/welcomeFragment"
             app:popUpTo="@+id/nav_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
@@ -50,4 +53,9 @@
         android:id="@+id/welcomeFragment"
         android:name="com.yashovardhan99.firebaselogin.WelcomeFragment"
         android:label="Welcome" />
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.yashovardhan99.firebaselogin.ResetPasswordFragment"
+        android:label="Reset Password"
+        tools:layout="@layout/fragment_resetpassword" />
 </navigation>

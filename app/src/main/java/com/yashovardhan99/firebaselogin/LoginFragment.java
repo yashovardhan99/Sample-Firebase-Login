@@ -16,6 +16,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
+import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthEmailException;
@@ -35,13 +36,17 @@ public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
     private final String TAG = "LoginFragment";
     private CircularProgressDrawable drawable;
+    private NavController navController;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().show();
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host);
         binding.loginButton.setOnClickListener(this::login);
+        binding.resetPasswordButton.setOnClickListener(v -> navController.navigate(
+                R.id.action_loginFragment_to_resetPasswordFragment));
         return binding.getRoot();
     }
 
@@ -120,7 +125,6 @@ public class LoginFragment extends Fragment {
         Log.d(TAG, "onLogin: Successfully logged in");
         FancyToast.makeText(getContext(), "Logged In!", FancyToast.LENGTH_LONG,
                 FancyToast.SUCCESS, false).show();
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host);
         navController.navigate(
                 LoginFragmentDirections.actionLoginFragmentToWelcomeFragment());
     }
@@ -151,7 +155,11 @@ public class LoginFragment extends Fragment {
             } else
                 FancyToast.makeText(getContext(), "Something went wrong creating your account", FancyToast.LENGTH_LONG,
                         FancyToast.ERROR, false).show();
-        } else {
+        } else if (exception instanceof FirebaseNetworkException) {
+            FancyToast.makeText(getContext(), "No Internet", FancyToast.LENGTH_LONG,
+                    FancyToast.ERROR, false).show();
+        }
+        else {
             FancyToast.makeText(getContext(), "Something went wrong signing you up", FancyToast.LENGTH_LONG,
                     FancyToast.ERROR, false).show();
         }

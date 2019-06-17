@@ -15,6 +15,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
+import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.shashank.sony.fancytoastlib.FancyToast;
 import com.yashovardhan99.firebaselogin.databinding.FragmentPreloginBinding;
@@ -58,8 +59,12 @@ public class PreLoginFragment extends Fragment {
             } else {
                 hideProgress();
                 Log.d(TAG, "anonymousSignIn: Error" + task.getException());
-                FancyToast.makeText(getContext(), "We couldn't get you in. Please check your internet connection",
-                        FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+                if (task.getException() instanceof FirebaseNetworkException)
+                    FancyToast.makeText(getContext(), "No Internet", FancyToast.LENGTH_LONG,
+                            FancyToast.ERROR, false).show();
+                else
+                    FancyToast.makeText(getContext(), "We couldn't get you in. Please check your internet connection",
+                            FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
             }
         });
     }

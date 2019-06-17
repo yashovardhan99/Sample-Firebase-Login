@@ -16,6 +16,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
+import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthEmailException;
@@ -170,6 +171,9 @@ public class SignupFragment extends Fragment {
             } else
                 FancyToast.makeText(getContext(), "Something went wrong creating your account", FancyToast.LENGTH_LONG,
                         FancyToast.ERROR, false).show();
+        } else if (exception instanceof FirebaseNetworkException) {
+            FancyToast.makeText(getContext(), "No Internet", FancyToast.LENGTH_LONG,
+                    FancyToast.ERROR, false).show();
         } else {
             FancyToast.makeText(getContext(), "Something went wrong signing you up", FancyToast.LENGTH_LONG,
                     FancyToast.ERROR, false).show();
