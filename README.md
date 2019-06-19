@@ -38,13 +38,15 @@ Try to follow the [AOSP Code style](https://source.android.com/setup/contribute/
  - [X] Creating Navigation Graph
  - [X] Implementing FirebaseAuth for Login
  - [X] Implementing FirebaseAuth for SignUp
- - [ ] ~~Implementing FirebaseAuth for Single Click Email Login~~ - Not on priority
- - [ ] ~~Adding Email Verification~~ - Not on priority
  - [X] Implement reset password
  - [X] Implement Anonymous Sign in
- - [ ] Add sign out options on welcome page
- - [ ] Check for sign in at pre-login page
- - [ ] Remove back navigation from welcome page
+ - [X] Add sign out options on welcome page
+ - [X] Check for sign in at pre-login page
+ - [X] Add option to change password
+ - [ ] Add option to delete user account
+ - [ ] Remove back navigation from welcome page (Refer issue #1)
+ - [ ] ~~Implementing FirebaseAuth for Single Click Email Login~~ - Not on priority
+ - [ ] ~~Adding Email Verification~~ - Not on priority
 
 ## Usage
 To use this sample in your own project, you can either clone this repo and build a completely new app or you can take the relevant layouts and fragments you need. Either way, please give credit where due and use in accordance with the license.

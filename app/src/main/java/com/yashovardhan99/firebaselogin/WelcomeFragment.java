@@ -37,7 +37,7 @@ public class WelcomeFragment extends Fragment implements ChangePasswordDialogFra
     private FragmentWelcomeBinding binding;
     private NavController navController;
     private FirebaseAuth mAuth;
-    private CircularProgressDrawable drawable;
+    private CircularProgressDrawable drawableCP, drawableSO, drawableD;
     private DialogFragment changePasswordFragment;
 
     @Nullable
@@ -74,7 +74,6 @@ public class WelcomeFragment extends Fragment implements ChangePasswordDialogFra
         changePasswordFragment = new ChangePasswordDialogFragment(this);
         changePasswordFragment.setStyle(DialogFragment.STYLE_NORMAL, 0);
         changePasswordFragment.show(getFragmentManager(), "dialog");
-        showChangePasswordProgress();
     }
 
     private void signOut() {
@@ -101,9 +100,9 @@ public class WelcomeFragment extends Fragment implements ChangePasswordDialogFra
         if (mAuth.getCurrentUser().isAnonymous()) {
             FancyToast.makeText(getContext(), "You are not signed in with a proper account", FancyToast.LENGTH_LONG,
                     FancyToast.ERROR, false).show();
-            hideChangePasswordProgress();
             return;
         }
+        showChangePasswordProgress();
         AuthCredential credential = EmailAuthProvider.getCredential(mAuth.getCurrentUser().getEmail(), current);
         mAuth.getCurrentUser().reauthenticate(credential).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -115,7 +114,8 @@ public class WelcomeFragment extends Fragment implements ChangePasswordDialogFra
                 if (task.getException() instanceof FirebaseAuthInvalidUserException) {
                     FancyToast.makeText(getContext(), "Your user account may be disabled or deleted. Please contact support",
                             FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
-                    signOut();
+                    mAuth.signOut();
+                    navController.navigate(R.id.action_welcomeFragment_to_preLoginFragment);
                 } else if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                     FancyToast.makeText(getContext(), "Wrong password!", FancyToast.LENGTH_LONG,
                             FancyToast.ERROR, false).show();
@@ -127,12 +127,6 @@ public class WelcomeFragment extends Fragment implements ChangePasswordDialogFra
                             FancyToast.ERROR, false).show();
             }
         });
-    }
-
-    @Override
-    public void onDismissed() {
-        hideChangePasswordProgress();
-        changePasswordFragment.dismiss();
     }
 
     private void onPasswordChangeListener(Task<Void> task2) {
@@ -152,7 +146,8 @@ public class WelcomeFragment extends Fragment implements ChangePasswordDialogFra
             } else if (task2.getException() instanceof FirebaseAuthInvalidUserException) {
                 FancyToast.makeText(getContext(), "Your account may be disabled or deleted. Please contact support",
                         FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
-                signOut();
+                mAuth.signOut();
+                navController.navigate(R.id.action_welcomeFragment_to_preLoginFragment);
             } else if (task2.getException() instanceof FirebaseAuthRecentLoginRequiredException) {
                 FancyToast.makeText(getContext(), "There was some problem authenticating you. Please try again",
                         FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
@@ -163,14 +158,14 @@ public class WelcomeFragment extends Fragment implements ChangePasswordDialogFra
     }
 
     private void showChangePasswordProgress() {
-        drawable = new CircularProgressDrawable(getContext());
-        drawable.setStyle(CircularProgressDrawable.LARGE);
-        drawable.setColorSchemeColors(getResources().getColor(R.color.colorPrimary), 0);
-        int size = (int) (drawable.getCenterRadius() + drawable.getStrokeWidth()) * 2;
-        drawable.setBounds(0, 0, size, size);
+        drawableCP = new CircularProgressDrawable(getContext());
+        drawableCP.setStyle(CircularProgressDrawable.LARGE);
+        drawableCP.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+        int size = (int) (drawableCP.getCenterRadius() + drawableCP.getStrokeWidth()) * 2;
+        drawableCP.setBounds(0, 0, size, size);
         binding.changePasswordButton.setText("Changing");
-        binding.changePasswordButton.setCompoundDrawables(null, null, drawable, null);
-        drawable.start();
+        binding.changePasswordButton.setCompoundDrawables(null, null, drawableCP, null);
+        drawableCP.start();
 
         Drawable.Callback callback = new Drawable.Callback() {
             @Override
@@ -187,27 +182,27 @@ public class WelcomeFragment extends Fragment implements ChangePasswordDialogFra
             public void unscheduleDrawable(@NonNull Drawable who, @NonNull Runnable what) {
             }
         };
-        drawable.setCallback(callback);
+        drawableCP.setCallback(callback);
 
     }
 
     private void hideChangePasswordProgress() {
-        if (drawable != null)
-            drawable.stop();
-        drawable = null;
+        if (drawableCP != null)
+            drawableCP.stop();
+        drawableCP = null;
         binding.changePasswordButton.setText(R.string.change_password);
         binding.changePasswordButton.setCompoundDrawables(null, null, null, null);
     }
 
     private void showSignOutProgress() {
-        drawable = new CircularProgressDrawable(getContext());
-        drawable.setStyle(CircularProgressDrawable.LARGE);
-        drawable.setColorSchemeColors(Color.WHITE);
-        int size = (int) (drawable.getCenterRadius() + drawable.getStrokeWidth()) * 2;
-        drawable.setBounds(0, 0, size, size);
+        drawableSO = new CircularProgressDrawable(getContext());
+        drawableSO.setStyle(CircularProgressDrawable.LARGE);
+        drawableSO.setColorSchemeColors(Color.WHITE);
+        int size = (int) (drawableSO.getCenterRadius() + drawableSO.getStrokeWidth()) * 2;
+        drawableSO.setBounds(0, 0, size, size);
         binding.signoutButton.setText("Signing out");
-        binding.signoutButton.setCompoundDrawables(null, null, drawable, null);
-        drawable.start();
+        binding.signoutButton.setCompoundDrawables(null, null, drawableSO, null);
+        drawableSO.start();
 
         Drawable.Callback callback = new Drawable.Callback() {
             @Override
@@ -225,26 +220,26 @@ public class WelcomeFragment extends Fragment implements ChangePasswordDialogFra
 
             }
         };
-        drawable.setCallback(callback);
+        drawableSO.setCallback(callback);
     }
 
     private void hideSignOutProgress() {
-        if (drawable != null)
-            drawable.stop();
-        drawable = null;
+        if (drawableSO != null)
+            drawableSO.stop();
+        drawableSO = null;
         binding.signoutButton.setText(R.string.sign_out);
         binding.signoutButton.setCompoundDrawables(null, null, null, null);
     }
 
     private void showDeleteProgress() {
-        drawable = new CircularProgressDrawable(getContext());
-        drawable.setStyle(CircularProgressDrawable.LARGE);
-        drawable.setColorSchemeColors(Color.WHITE);
-        int size = (int) (drawable.getCenterRadius() + drawable.getStrokeWidth()) * 2;
-        drawable.setBounds(0, 0, size, size);
+        drawableD = new CircularProgressDrawable(getContext());
+        drawableD.setStyle(CircularProgressDrawable.LARGE);
+        drawableD.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+        int size = (int) (drawableD.getCenterRadius() + drawableD.getStrokeWidth()) * 2;
+        drawableD.setBounds(0, 0, size, size);
         binding.deleteButton.setText("Deleting");
-        binding.deleteButton.setCompoundDrawables(null, null, drawable, null);
-        drawable.start();
+        binding.deleteButton.setCompoundDrawables(null, null, drawableD, null);
+        drawableD.start();
 
         Drawable.Callback callback = new Drawable.Callback() {
             @Override
@@ -262,13 +257,13 @@ public class WelcomeFragment extends Fragment implements ChangePasswordDialogFra
 
             }
         };
-        drawable.setCallback(callback);
+        drawableD.setCallback(callback);
     }
 
     private void hideDeleteProgress() {
-        if (drawable != null)
-            drawable.stop();
-        drawable = null;
+        if (drawableD != null)
+            drawableD.stop();
+        drawableD = null;
         binding.deleteButton.setText(R.string.delete_account);
         binding.deleteButton.setCompoundDrawables(null, null, null, null);
     }

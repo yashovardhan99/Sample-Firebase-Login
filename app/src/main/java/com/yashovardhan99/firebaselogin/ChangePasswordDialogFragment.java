@@ -28,7 +28,7 @@ public class ChangePasswordDialogFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragmentdialog_changepassword, container, false);
         binding.changePasswordButton.setOnClickListener(this::sendPasswords);
-        binding.cancelAction.setOnClickListener(v -> listener.onDismissed());
+        binding.cancelAction.setOnClickListener(v -> dismiss());
         return binding.getRoot();
     }
 
@@ -51,7 +51,5 @@ public class ChangePasswordDialogFragment extends DialogFragment {
 
     interface ChangePasswordListener {
         void onChangePassword(String current, String newPassword);
-
-        void onDismissed();
     }
 }
