@@ -29,6 +29,7 @@ public class PreLoginFragment extends Fragment {
     private FragmentPreloginBinding binding;
     private CircularProgressDrawable drawable;
     private NavController navController;
+    private FirebaseAuth mAuth;
 
     @Nullable
     @Override
@@ -42,6 +43,10 @@ public class PreLoginFragment extends Fragment {
     public void onStart() {
         super.onStart();
         navController = Navigation.findNavController(getActivity(), R.id.nav_host);
+        mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            navController.navigate(PreLoginFragmentDirections.actionPreLoginFragmentToWelcomeFragment());
+        }
         binding.loginButton.setOnClickListener(v -> navController.navigate(R.id.action_preLoginFragment_to_loginFragment));
         binding.signupButton.setOnClickListener(v -> navController.navigate(R.id.action_preLoginFragment_to_signupFragment));
         binding.anonymousButton.setOnClickListener(v -> anonymousSignIn());
@@ -49,7 +54,6 @@ public class PreLoginFragment extends Fragment {
 
     private void anonymousSignIn() {
         showProgress();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.signInAnonymously().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Log.d(TAG, "anonymousSignIn: Success");

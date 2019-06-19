@@ -52,7 +52,14 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.yashovardhan99.firebaselogin.WelcomeFragment"
-        android:label="Welcome" />
+        android:label="Welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_preLoginFragment"
+            app:destination="@id/preLoginFragment"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.yashovardhan99.firebaselogin.ResetPasswordFragment"
