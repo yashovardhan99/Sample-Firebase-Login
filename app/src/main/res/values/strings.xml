@@ -11,4 +11,7 @@
     <string name="reset_password">Reset Password</string>
     <string name="continue_without_signing_in">Continue without Signing in</string>
     <string name="send_reset_link">Send Reset Link</string>
+    <string name="change_password">Change Password</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="delete_account">Delete Account</string>
 </resources>
