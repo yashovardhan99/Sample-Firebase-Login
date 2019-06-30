@@ -30,7 +30,7 @@ Try to follow the [AOSP Code style](https://source.android.com/setup/contribute/
 - [Jetpack](https://developer.android.com/jetpack/) Navigation (Android Architecture)
 - [FancyToast-Android](https://github.com/Shashank02051997/FancyToast-Android)  
 
-## Work in Progress
+## Project Progress
  - [X] Creating a new Android Studio Project
  - [X] Adding relevant dependencies
  - [X] Creating Layouts
@@ -55,7 +55,7 @@ To use this sample in your own project, you can either clone this repo and build
 No Tests yet. If you could help create some, please open an issue!
 
 ## Contributing
-Feel free to open issues and PRs. However, please don't just complete this project for me. Let me complete the base repository and you can add more features later. Contributing guidelines will be up soon.
+Feel free to open issues and PRs. Please check the list of open issues and leave a comment if you think you can help. Contributing guidelines will be up soon.
 
 ## License
 Copyright 2019 Yashovardhan Dhanania
