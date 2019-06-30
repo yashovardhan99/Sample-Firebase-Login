@@ -43,7 +43,7 @@ Try to follow the [AOSP Code style](https://source.android.com/setup/contribute/
  - [X] Add sign out options on welcome page
  - [X] Check for sign in at pre-login page
  - [X] Add option to change password
- - [ ] Add option to delete user account
+ - [X] Add option to delete user account
  - [ ] Remove back navigation from welcome page (Refer issue #1)
  - [ ] ~~Implementing FirebaseAuth for Single Click Email Login~~ - Not on priority
  - [ ] ~~Adding Email Verification~~ - Not on priority
